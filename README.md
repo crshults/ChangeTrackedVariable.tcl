@@ -32,3 +32,9 @@ set status Idle; # ->
 set status Idle; # ->
 ```
 Now when I'm polling some device for status and it keeps telling me "I'm Idle, I'm Idle, I'm Idle,..." I can handle the first and ignore the rest.
+
+## How to make it available for use:
+
+1. Take the Tcl module file and drop it into `<TclInstallRoot>\lib\tcl8\8.6\`
+2. Rename it to change_tracked_variable-0.0.3.tm
+3. `package require change_tracked_variable`
