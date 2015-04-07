@@ -1,4 +1,4 @@
-package provide change_tracked_variable 0.0.1
+package provide change_tracked_variable 0.0.2
 package require TclOO
 
 oo::class create change_tracked_variable {
@@ -10,10 +10,11 @@ oo::class create change_tracked_variable {
         $_callback
     }
 
-    method set {new_value} {
+    method set {new_value {custom_callback {}}} {
         if {$new_value != $_variable} {
             set _variable $new_value
             $_callback
+            eval $custom_callback
         }
     }
 
