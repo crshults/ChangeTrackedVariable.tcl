@@ -1,11 +1,12 @@
-package provide change_tracked_variable 0.0.2
+package provide change_tracked_variable 0.0.3
 package require TclOO
 
 oo::class create change_tracked_variable {
-    variable _variable _callback
+    variable _variable _default _callback
 
     constructor {initial_value callback} {
         set _variable $initial_value
+        set _default  $initial_value
         set _callback $callback
         $_callback
     }
@@ -20,5 +21,9 @@ oo::class create change_tracked_variable {
 
     method get {} {
         return $_variable
+    }
+
+    method reset {} {
+        my set $_default
     }
 }
